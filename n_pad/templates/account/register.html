@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block page_title %}Registration{% endblock %}
+
+{% block page_content %}
+    <div class = "container py-5">
+        <div class = "row d-flex justify-content-center align-items-center">
+            <div class = "col-9 col-sm-10 col-md-8 col-lg-5 h-100">
+                <div class = "card shadow-lg">
+                    <div class = "card-body p-5">
+                        <h2 class = "text-center mb-5">Registration</h2>
+
+                        {% for message in messages %}
+                        <div class = "bg-warning px-2">
+                            <p>{{message}}</p>
+                        </div>
+                        {% endfor %}
+
+                        <form action = "{% url 'account:register' %}" method = "post">
+                            {% csrf_token %}
+
+                            <div class = "mb-3">
+                                <input required type = "text" id = "id_email" name = "email" placeholder = "Email" class = "form-control"/>
+                            </div>
+
+                            <div class = "mb-3">
+                                <input required type = "text" id = "id_username" name = "username" placeholder = "Username" class = "form-control"/>
+                            </div>
+
+                            <div class = "mb-3">
+                                <input required type = "password" id = "id_password" name = "password" placeholder = "Password" class = "form-control"/>
+                            </div>
+
+                            <div class = "mb-3">
+                                <input required type = "password" id = "id_password2" name = "password2" placeholder = "Repeat your password" class = "form-control"/>
+                            </div>
+                            
+                            <br>
+                            <button class = "btn btn-primary btn-block w-100" type = "submit">Register</button>
+                        </form>
+
+                        <hr>
+
+                        <p class = "text-center">Already have account? <a href = "{% url 'account:login' %}" class = "text-primary text-decoration-none">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block page_title %}
+    Home
+{% endblock %}
+
+{% block page_content %}
+    <div class = "container">
+        <h1>Write Notes. Don't Forget Anything!</h1>
+        <h4>{% lorem 20 w %}</h4>
+    </div>
+    <br>
+    <hr>
+    <br>
+
+    {% if user.is_authenticated %}
+
+    {% else %}
+    <div class = "container justify-content-center align-items-center col col-lg-6 col-md-8 col-sm-10 ">
+        <div class = "card shadow-lg">
+            <div class = "col p-4 d-inline">
+                <h3>Let's start noting!</h3>
+                <p>Please login or register to use our services</p>
+                <a href = "{% url 'account:login' %}" class = "btn btn-primary d-block my-2">{%comment%} {% bs_icon 'box-arrow-in-right' %}{%endcomment%} Login</a>
+                <a href = "{% url 'account:register' %}" class = "btn btn-primary d-block my-2">{%comment%}{% bs_icon 'plus-circle' %}{%endcomment%}Register</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
