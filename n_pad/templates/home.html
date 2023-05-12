@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load bootstrap_icons %}
+{% load note_card %}
 
 {% block page_title %}
     Home
@@ -17,14 +18,23 @@
     <br>
 
     {% if user.is_authenticated %}
-
+    <div class = "container">
+        <div class = "row my-3">
+            <div class = "card col-xl-3 col-lg-3 col-md-4 col-sm-5 col-5 m-3 p-0 btn btn-outline-primary">
+                <div class = "m-auto">+ Create Note</div>
+            </div>
+            {% for note in notes %}
+                {% draw_note_card note.note_title note.note_content note.note_last_modified note.id %}
+            {% endfor %}
+        </div>
+    </div>
     {% else %}
-    <div class = "container justify-content-center align-items-center col col-lg-6 col-md-8 col-sm-10 ">
+    <div class = "container justify-content-center align-items-center col col-lg-6 col-md-8 col-sm-10">
         <div class = "card shadow-lg">
             <div class = "col p-4 d-inline">
                 <h3>Let's start noting!</h3>
                 <p>Please login or register to use our services</p>
-                <a href = "{% url 'account:login' %}" class = "btn btn-primary d-block my-2">{%comment%} {% bs_icon 'box-arrow-in-right' %}{%endcomment%} Login</a>
+                <a href = "{% url 'account:login' %}" class = "btn btn-primary d-block my-2">{%comment%}{% bs_icon 'box-arrow-in-right' %}{%endcomment%} Login</a>
                 <a href = "{% url 'account:register' %}" class = "btn btn-primary d-block my-2">{%comment%}{% bs_icon 'plus-circle' %}{%endcomment%}Register</a>
             </div>
         </div>

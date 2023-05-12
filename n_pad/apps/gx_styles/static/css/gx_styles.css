@@ -5,3 +5,9 @@
     background-size: cover;
     background-attachment: fixed
 };
+
+.gx-text-fading {
+    background: -webkit-linear-gradient(#000, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+};

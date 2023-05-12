@@ -1,0 +1,23 @@
+<div class = "card col-xl-3 col-lg-3 col-md-4 col-sm-5 col-5 m-3 p-0 d-flex">
+    <div class = "card-header">
+        <p class = "m-0 text-primary"><i>{{note_date}}</i></p>
+        {% if note_title %}
+            <h6 class = "text-nowrap text-truncate">{{note_title}}</h6>
+        {% else %}
+            <h6><i>Untitled</i></h6>
+        {% endif %}
+    </div>
+    <div class = "card-body">
+        <div class = "d-flex flex-column h-100">
+            {% if note_content|length < 100 %}
+                <p>{{note_content}}</p>
+            {% else %}
+                <p class = "gx-text-fading">{{note_content|slice:"0:100"}}...</p>
+            {% endif %}
+            <form action = "{% url 'home:edit_note' note_id %}" class = "mt-auto">
+                {% csrf_token %}
+                <button type = "submit" class = "btn btn-primary btn-block w-100">Edit</button>
+            </form>
+        </div>
+    </div>
+</div>
