@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load bootstrap_icons %}
+
 {% block page_title %}Login{% endblock %}
 
 {% block page_content %}
@@ -18,11 +20,13 @@
 
                         <form action = "{% url 'account:login' %}" method = "post">
                             {% csrf_token %}
-                            <div class = "mb-3">
+                            <div class = "mb-3 input-group">
+                                <span class = "input-group-text">{% bs_icon "person" %}</span>
                                 <input required type = "text" id = "id_username" name = "username" placeholder = "Username" class = "form-control"/>
                             </div>
 
-                            <div class = "mb-3">
+                            <div class = "mb-3 input-group">
+                                <span class = "input-group-text">{% bs_icon "key" %}</span>
                                 <input required type = "password" id = "id_password" name = "password" placeholder = "Password" class = "form-control"/>
                             </div>
                             

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load bootstrap_icons %}
+
 {% block page_title %}Registration{% endblock %}
 
 {% block page_content %}
@@ -19,19 +21,24 @@
                         <form action = "{% url 'account:register' %}" method = "post">
                             {% csrf_token %}
 
-                            <div class = "mb-3">
+                            <div class = "mb-3 input-group">
+                                <span class = "input-group-text">@</span>
                                 <input required type = "text" id = "id_email" name = "email" placeholder = "Email" class = "form-control"/>
                             </div>
 
-                            <div class = "mb-3">
+                            <div class = "mb-3 input-group">
+                                <span class = "input-group-text">{% bs_icon "person" %}</span>
                                 <input required type = "text" id = "id_username" name = "username" placeholder = "Username" class = "form-control"/>
                             </div>
 
-                            <div class = "mb-3">
-                                <input required type = "password" id = "id_password" name = "password" placeholder = "Password" class = "form-control"/>
+                            <div class = "mb-3 input-group">
+                                <span class = "input-group-text">{% bs_icon "key" %}</span>
+                                <input required type = "password" id = "id_password" name = "password" placeholder = "Password" class = "form-control" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title = "Password should contain at least 8 characters"/>
                             </div>
 
-                            <div class = "mb-3">
+                            <div class = "mb-3 input-group">
+                                <span class = "input-group-text">{% bs_icon "key" %}</span>
                                 <input required type = "password" id = "id_password2" name = "password2" placeholder = "Repeat your password" class = "form-control"/>
                             </div>
                             

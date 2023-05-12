@@ -19,6 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "apps"))
 
+BS_ICONS_BASE_URL = 'https://icons.getbootstrap.com/assets/'
+BS_ICONS_CACHE    = os.path.join(PROJECT_ROOT, "bs_icons_cache")
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 

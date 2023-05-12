@@ -15,6 +15,10 @@ def register(request):
         __password_1 = request.POST["password"]
         __password_2 = request.POST["password2"]
 
+        if len(__password_1) < 8:
+            messages.info(request, "Password should contain at least 8 characters")
+            return redirect('account:register')
+
         if __password_1 != __password_2:
             messages.info(request, "Passwords don't match")
             return redirect('account:register')
